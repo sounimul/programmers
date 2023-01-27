@@ -1,12 +1,12 @@
 /*
 Lv. 1 연습문제
 - 2016년
+- 크기가 작은 부분 문자열
 */
 
 /*
 2016년
 */
-
 function solution(a, b) {
     var answer = '';
     let day = ['FRI', 'SAT', 'SUN','MON','TUE','WED','THU'];
@@ -25,5 +25,17 @@ function solution(a, b) {
     let index = n%7-1;
     if(index==-1) answer= day.at(-1);
     else answer = day[index];
+    return answer;
+}
+
+/*
+크기가 작은 부분 문자열
+*/
+function solution(t, p) {
+    var answer = 0;
+    
+    for(let i=0;i<=t.length-p.length;i++){
+        if(Number(t.slice(i,i+p.length))<=Number(p)) answer++;
+    }
     return answer;
 }
