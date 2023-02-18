@@ -9,32 +9,22 @@ Lv. 2 연습문제
 
 function solution(n) {
     var answer = '';
-    const arr = [1,2,4];
-
-    let k = 1;
-    let diff = 0;
+    let num = '';
+   
     while(1){
-         if(Math.pow(3,k)>=n) {
-             break;
-         }
-        else {
-            diff += Math.pow(3,k);
-            k++;
+        if(n/3<=1) {
+            num += String(n);
+            break;
+        }
+        else if(n%3==0){
+            num += 3;
+            n = parseInt(n/3)-1;
+        }
+        else{
+            num += String(n%3);
+            n = parseInt(n/3);
         }
     }
-  
-    function P(arr, s) {
-        const results = [];
-        if (s === 1) return arr.map((item) => [item]);
-
-        arr.forEach((fixed, index, origin) => {
-            const permutations = P(arr, s - 1);
-            const attached = permutations.map((permutation) => [fixed, ...permutation]);
-        results.push(...attached);
-  });
-  return results;
-};
-    let world = (P(arr,k)).map(item=>item.join(''));
-    
+    answer = num.split('').reverse().join('').replaceAll('3','4');
     return answer;
 }
